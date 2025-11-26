@@ -1,0 +1,6 @@
+Generate detailed positive and negative test cases for the discount code SAVE15
+on the checkout page. Use the documentation and checkout.html structure. Include:
+- Preconditions
+- Test Steps
+- Expected Results
+- References to source documents.

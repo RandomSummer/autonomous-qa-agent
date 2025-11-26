@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>E-Shop Checkout</title>
+</head>
+
+<body>
+  <h1>Checkout</h1>
+
+  <div id="cart">
+    <p id="itemName">Wireless Headphones</p>
+    <p id="itemPrice" data-price="60.00">$60.00</p>
+  </div>
+
+  <div id="discount-section">
+    <label for="discountCodeInput">Discount Code</label>
+    <input id="discountCodeInput" type="text" placeholder="Enter discount code">
+    <button id="applyDiscountBtn">Apply</button>
+    <p id="discountMessage"></p>
+  </div>
+
+  <div id="summary">
+    <p>Subtotal: <span id="subtotalAmount">$60.00</span></p>
+    <p>Total: <span id="totalAmount">$60.00</span></p>
+  </div>
+
+  <button id="payNowBtn">Pay Now</button>
+
+  <script>
+    document.getElementById('applyDiscountBtn').addEventListener('click', function () {
+      const code = document.getElementById('discountCodeInput').value;
+      const messageElement = document.getElementById('discountMessage');
+      const totalElement = document.getElementById('totalAmount');
+      const subtotalElement = document.getElementById('subtotalAmount');
+
+      // Parse subtotal (remove $ and convert to float)
+      const subtotal = parseFloat(subtotalElement.innerText.replace('$', ''));
+
+      if (code === 'SAVE15') {
+        // Apply 15% discount
+        const discount = subtotal * 0.15;
+        const newTotal = subtotal - discount;
+
+        // Update message
+        messageElement.innerText = "Discount applied: 15% off";
+        messageElement.style.color = "green";
+
+        // Update total
+        totalElement.innerText = "$" + newTotal.toFixed(2);
+      } else {
+        // Invalid code
+        messageElement.innerText = "Invalid discount code";
+        messageElement.style.color = "red";
+        totalElement.innerText = "$" + subtotal.toFixed(2);
+      }
+    });
+  </script>
+</body>
+
+</html>

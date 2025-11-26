@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Shop Checkout</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .error { color: red; font-size: 12px; display: none; }
+        .success { color: green; font-size: 18px; display: none; font-weight: bold; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .btn-primary { background: green; color: white; border: none; }
+        .btn-secondary { background: gray; color: white; border: none; }
+        input, select { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+        .cart-item { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
+        .required { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Checkout</h1>
+
+    <!-- Product Cart -->
+    <div id="cart-section">
+        <h2>Shopping Cart</h2>
+        <div class="cart-item" id="item-1">
+            <span>Laptop - $999</span>
+            <input type="number" id="qty-1" name="qty-1" value="1" min="0" max="10">
+            <button onclick="updateCart()" class="btn-secondary">Update</button>
+        </div>
+        <div class="cart-item" id="item-2">
+            <span>Mouse - $29</span>
+            <input type="number" id="qty-2" name="qty-2" value="1" min="0" max="10">
+            <button onclick="updateCart()" class="btn-secondary">Update</button>
+        </div>
+        <div class="cart-item" id="item-3">
+            <span>Keyboard - $79</span>
+            <input type="number" id="qty-3" name="qty-3" value="0" min="0" max="10">
+            <button onclick="updateCart()" class="btn-secondary">Update</button>
+        </div>
+        <p><strong>Subtotal: $<span id="subtotal">1028</span></strong></p>
+    </div>
+
+    <!-- Discount Code -->
+    <div>
+        <h3>Discount Code</h3>
+        <input type="text" id="discount-code" name="discount_code" placeholder="Enter discount code">
+        <button onclick="applyDiscount()" class="btn-secondary">Apply</button>
+        <div class="error" id="discount-error">Invalid discount code</div>
+        <div class="success" id="discount-success">Discount applied!</div>
+        <p>Discount: $<span id="discount-amount">0</span></p>
+    </div>
+
+    <!-- Checkout Form -->
+    <form id="checkout-form" onsubmit="return submitOrder(event)">
+        <h2>Customer Details</h2>
+
+        <label>Name <span class="required">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <div class="error" id="name-error">Name must be at least 2 characters</div>
+
+        <label>Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+        <div class="error" id="email-error">Please enter a valid email address</div>
+
+        <label>Address <span class="required">*</span></label>
+        <input type="text" id="address" name="address" placeholder="Street Address" required>
+        <div class="error" id="address-error">Address must be at least 10 characters</div>
+
+        <h3>Shipping Method</h3>
+        <label>
+            <input type="radio" name="shipping" value="standard" id="shipping-standard" checked>
+            Standard Shipping (Free - 5-7 days)
+        </label><br>
+        <label>
+            <input type="radio" name="shipping" value="express" id="shipping-express">
+            Express Shipping ($10 - 1-2 days)
+        </label>
+        <p>Shipping Cost: $<span id="shipping-cost">0</span></p>
+
+        <h3>Payment Method</h3>
+        <label>
+            <input type="radio" name="payment" value="credit-card" id="payment-credit" checked>
+            Credit Card
+        </label><br>
+        <label>
+            <input type="radio" name="payment" value="paypal" id="payment-paypal">
+            PayPal
+        </label>
+
+        <h3>Order Total</h3>
+        <p><strong>Total: $<span id="total">1028</span></strong></p>
+
+        <button type="submit" class="btn-primary" id="pay-btn">Pay Now</button>
+        <div class="success" id="payment-success">Payment Successful!</div>
+    </form>
+
+    <script>
+        // JavaScript for form validation and cart updates would go here
+        function updateCart() { /* Cart update logic */ }
+        function applyDiscount() { /* Discount logic */ }
+        function submitOrder(event) {
+            event.preventDefault();
+            // Validation and submission logic
+            document.getElementById('payment-success').style.display = 'block';
+            return false;
+        }
+    </script>
+</body>
+</html>

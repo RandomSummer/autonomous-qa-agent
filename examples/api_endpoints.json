@@ -1,0 +1,62 @@
+{
+  "api_version": "1.0",
+  "base_url": "https://api.eshop.com",
+  "endpoints": {
+    "apply_discount": {
+      "method": "POST",
+      "path": "/api/cart/apply-discount",
+      "description": "Apply discount code to cart",
+      "parameters": {
+        "code": {
+          "type": "string",
+          "required": true,
+          "example": "SAVE15"
+        },
+        "cart_total": {
+          "type": "number",
+          "required": true,
+          "example": 100.00
+        }
+      },
+      "response": {
+        "success": "boolean",
+        "discount_amount": "number",
+        "new_total": "number",
+        "message": "string"
+      }
+    },
+    "submit_order": {
+      "method": "POST",
+      "path": "/api/orders/submit",
+      "description": "Submit order for processing",
+      "parameters": {
+        "customer": {
+          "name": "string",
+          "email": "string",
+          "address": "string"
+        },
+        "cart_items": "array",
+        "shipping_method": "string",
+        "payment_method": "string",
+        "discount_code": "string"
+      },
+      "response": {
+        "success": "boolean",
+        "order_id": "string",
+        "total_amount": "number",
+        "message": "string"
+      }
+    },
+    "get_cart": {
+      "method": "GET",
+      "path": "/api/cart",
+      "description": "Retrieve current cart contents",
+      "response": {
+        "items": "array",
+        "subtotal": "number",
+        "tax": "number",
+        "total": "number"
+      }
+    }
+  }
+}

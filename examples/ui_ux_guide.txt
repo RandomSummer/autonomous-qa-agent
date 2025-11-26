@@ -1,0 +1,34 @@
+E-Shop UI/UX Guidelines
+
+=== Form Validation ===
+- All error messages must be displayed in RED text (#FF0000)
+- Required field indicators: Red asterisk (*)
+- Success messages must be displayed in GREEN (#00FF00)
+- Error messages should appear inline below the field
+
+=== Button Styling ===
+- Primary action buttons (Pay Now): GREEN background
+- Secondary buttons (Cancel): GRAY background
+- Buttons should be disabled during processing
+- Button text should change to "Processing..." during submission
+
+=== Input Field Requirements ===
+- Name field: Minimum 2 characters, letters only
+- Email field: Must match email format (contains @)
+- Address field: Minimum 10 characters
+- All fields must have placeholder text
+- Focus should highlight field with blue border
+
+=== Cart Display ===
+- Show quantity selector for each item
+- Display individual item price
+- Display subtotal
+- Display discount amount (if applicable)
+- Display shipping cost
+- Display final total in bold
+
+=== Error Scenarios ===
+- Empty required fields: "This field is required"
+- Invalid email: "Please enter a valid email address"
+- Invalid name: "Name must contain only letters"
+- Invalid discount code: "Invalid discount code"
