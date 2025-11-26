@@ -1,0 +1,36 @@
+services:
+  # FastAPI Backend Service
+  - type: web
+    name: qa-agent-backend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash start_backend.sh
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8000
+    disk:
+      name: qa-agent-data
+      mountPath: /opt/render/project/data
+      sizeGB: 1
+    healthCheckPath: /api/health
+
+  # Streamlit Frontend Service
+  - type: web
+    name: qa-agent-frontend
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash start_frontend.sh
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: qa-agent-backend
+          property: host
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8501

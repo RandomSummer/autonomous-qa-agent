@@ -36,14 +36,26 @@ class Settings:
     # Base project directory
     BASE_DIR: Path = Path(__file__).resolve().parent.parent
 
+    # Detect if running on Render (check for RENDER environment variable)
+    IS_RENDER: bool = os.getenv("RENDER", "").lower() == "true" or os.path.exists("/opt/render")
+
     # Where uploaded documents are stored temporarily
-    UPLOAD_PATH: Path = BASE_DIR / "data" / "uploads"
+    UPLOAD_PATH: Path = (
+        Path("/opt/render/project/data/uploads") if IS_RENDER 
+        else BASE_DIR / "data" / "uploads"
+    )
 
     # Where ChromaDB stores vector embeddings
-    VECTOR_DB_PATH: Path = BASE_DIR / "data" / "vector_db"
+    VECTOR_DB_PATH: Path = (
+        Path("/opt/render/project/data/chroma_db") if IS_RENDER 
+        else BASE_DIR / "data" / "vector_db"
+    )
 
     # Where generated Selenium scripts are saved
-    OUTPUT_PATH: Path = BASE_DIR / "data" / "outputs"
+    OUTPUT_PATH: Path = (
+        Path("/opt/render/project/data/outputs") if IS_RENDER 
+        else BASE_DIR / "data" / "outputs"
+    )
 
     # === Vector Database Settings ===
     # Name of the ChromaDB collection
@@ -78,7 +90,7 @@ class Settings:
         cls.UPLOAD_PATH.mkdir(parents=True, exist_ok=True)
         cls.VECTOR_DB_PATH.mkdir(parents=True, exist_ok=True)
         cls.OUTPUT_PATH.mkdir(parents=True, exist_ok=True)
-        print("[OK] All directories verified/created")
+        print(f"[OK] All directories verified/created (Render: {cls.IS_RENDER})")
 
     @classmethod
     def validate(cls):

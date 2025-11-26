@@ -25,6 +25,15 @@ class EmbeddingService:
         """
         Lazy load the embedding model.
         Only loads when first needed to save startup time.
+        """
+        if self._model is None:
+            print(f"[INIT] Loading embedding model: {self.model_name}...")
+            self._model = SentenceTransformer(self.model_name)
+            print("[OK] Embedding model loaded")
+        return self._model
+
+    def embed_text(self, text: str) -> List[float]:
+        """
         Convert single text to embedding vector.
 
         Why normalize? Makes similarity search more accurate.
