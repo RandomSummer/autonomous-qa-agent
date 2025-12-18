@@ -1,0 +1,106 @@
+E-Shop UI/UX Design Guidelines
+
+=== FORM VALIDATION ===
+
+Error Message Display:
+- All form validation errors MUST be displayed in red text (#e74c3c)
+- Error messages should appear below the relevant input field
+- Error messages should be hidden by default and shown only when validation fails
+- Real-time validation should be implemented for email fields
+
+Required Field Validation:
+- All required fields must be marked with asterisk (*)
+- Required fields: Name, Email, Address
+- Empty required fields should show appropriate error messages
+- Form submission should be prevented if required fields are empty
+
+Email Validation:
+- Must validate email format using regex pattern
+- Invalid email should show error: "Please enter a valid email address"
+- Email field border should turn red when invalid
+- Real-time validation should occur as user types
+
+=== BUTTON STYLING ===
+
+Pay Now Button:
+- Background color: Green (#27ae60)
+- Text color: White
+- Font weight: Bold
+- Full width of container
+- Hover effect: Darker green (#229954)
+
+Add to Cart Buttons:
+- Background color: Blue (#3498db)
+- Text color: White
+- Hover effect: Darker blue (#2980b9)
+
+Apply Discount Button:
+- Background color: Orange (#f39c12)
+- Text color: White
+
+=== COLOR SCHEME ===
+
+Primary Colors:
+- Header background: Dark blue (#2c3e50)
+- Success messages: Green background (#d4edda) with dark green text (#155724)
+- Error messages: Red text (#e74c3c)
+- Cart section: Light gray background (#ecf0f1)
+
+=== LAYOUT REQUIREMENTS ===
+
+Grid Layout:
+- Two-column layout for desktop
+- Products section on left, checkout on right
+- Responsive design for mobile devices
+
+Cart Display:
+- Items should be clearly separated
+- Quantity controls next to each item
+- Remove buttons for individual items
+- Total prominently displayed
+
+=== INTERACTION FEEDBACK ===
+
+Loading States:
+- Show appropriate feedback during form submission
+- Disable buttons during processing to prevent double-submission
+
+Success States:
+- Hide checkout form after successful payment
+- Display success message with confirmation details
+- Use positive visual indicators (green colors)
+
+Error States:
+- Highlight problematic fields with red borders
+- Show specific error messages for each validation failure
+- Maintain form data when showing errors
+
+=== ACCESSIBILITY REQUIREMENTS ===
+
+Form Labels:
+- All form inputs must have associated labels
+- Labels should be descriptive and clear
+- Required fields should be clearly indicated
+
+Keyboard Navigation:
+- All interactive elements must be keyboard accessible
+- Tab order should be logical and intuitive
+- Focus indicators should be visible
+
+Screen Reader Support:
+- Error messages should be announced to screen readers
+- Form validation should provide clear feedback
+- Success messages should be accessible
+
+=== RESPONSIVE DESIGN ===
+
+Mobile Considerations:
+- Single column layout on small screens
+- Touch-friendly button sizes
+- Readable text sizes
+- Proper spacing between interactive elements
+
+Tablet Considerations:
+- Maintain two-column layout where space permits
+- Optimize for touch interactions
+- Ensure proper scaling of elements
