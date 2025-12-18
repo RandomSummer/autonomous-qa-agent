@@ -1,7 +1,0 @@
-{
-  "checkout": {
-    "url": "/checkout",
-    "methods": ["GET"],
-    "description": "Renders the E-Shop checkout page"
-  }
-}

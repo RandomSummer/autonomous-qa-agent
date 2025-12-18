@@ -1,7 +1,0 @@
-Checkout Page UI/UX Guidelines
-
-- Discount code input has placeholder text: "Enter discount code".
-- Error messages must be shown in red text under the discount field.
-- Success messages must be shown in green text under the discount field.
-- The final total should update immediately when the discount is applied.
-- The Pay Now button must remain enabled in all discount scenarios.
