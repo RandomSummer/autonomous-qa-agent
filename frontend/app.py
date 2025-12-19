@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import json
 import os
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 from typing import List, Dict, Any
 
 # Configure Streamlit page
